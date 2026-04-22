@@ -131,14 +131,21 @@ CREATE POLICY "Users can update own ad images" ON storage.objects
 CREATE POLICY "Users can delete own ad images" ON storage.objects
   FOR DELETE USING (bucket_id = 'ad-images' AND auth.uid()::text = (storage.foldername(name))[1]);
 
--- Seed default categories
 INSERT INTO public.categories (name, description, icon) VALUES
-  ('Electronics', 'Phones, computers, gadgets and more', 'Smartphone'),
-  ('Vehicles', 'Cars, trucks, motorcycles and parts', 'Car'),
-  ('Property', 'Houses, apartments, land and commercial property', 'Home'),
-  ('Construction', 'Building materials, tools and equipment', 'Hammer'),
-  ('Security Equipment', 'CCTV, alarms, access control', 'Shield'),
-  ('Furniture', 'Home and office furniture', 'Sofa'),
-  ('Clothing', 'Fashion, shoes and accessories', 'Shirt'),
-  ('Services', 'Professional and personal services', 'Briefcase'),
-  ('Jobs', 'Employment opportunities and listings', 'Users');
+  ('Transport & Logistics', 'Transportation services, delivery solutions, and logistics providers', 'Truck'),
+  
+  ('Banking & Financial Services', 'Banks, insurance providers, lending institutions, and financial advisory services', 'Landmark'),
+  
+  ('Restaurants & Food Services', 'Restaurants, takeaways, catering services, and food vendors', 'Utensils'),
+  
+  ('Tenders & Procurement', 'Business tenders, supply opportunities, and procurement listings', 'FileText'),
+  
+  ('Health Services', 'Hospitals, clinics, pharmacies, and healthcare providers', 'HeartPulse'),
+  
+  ('Vehicles & Auto Parts', 'Cars, motorcycles, spare parts, and automotive services', 'Car'),
+  
+  ('Salon & Barbershop', 'Hair salons, barbers, and personal grooming services', 'Scissors'),
+  
+  ('Telecommunications', 'Mobile networks, internet providers, and communication services', 'Signal'),
+  
+  ('Forestry & Carpentry', 'Woodwork, timber supply, carpentry, and forestry services', 'Tree');
